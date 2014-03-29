@@ -20,16 +20,18 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
+/**
+ * 
+ * @author Maxima cohesion
+ *
+ */
 public class Login extends Activity {
 
 	private Button login;
 	private EditText enrollment;
 	private EditText password;
-	private static final String MESSAGE =  "Nombre de usuario o contraseña incorrecta, intente de nuevo";
 	private static final String MESSAGE_EMPTY = "Es necesario llenar todos los campos";
 	private static final String URL = "http://192.168.229.26/Aplicaciones/tutor_virtual/api_v1/login";
-	private static final String ENRROLLMENT = "enrollment";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -82,21 +84,10 @@ public class Login extends Activity {
 		client.post(this, URL, entity, "application/json", new AsyncHttpResponseHandler(){
 			@Override
 			 public void onSuccess(String response){
-				try {
-					JSONObject success = new JSONObject(response);
-					
-					if(success.get("success").toString().equals("true")){
 						Intent intent = new Intent(Login.this,VirtualTutorActivity.class);
 						intent.putExtra(VirtualTutorActivity.EXTRA_ENROLLMENT, enrollment.getText().toString());
 						startActivity(intent);
-					}
-					else{
-						Toast.makeText(Login.this, "El nombre de usuario o contraseña es incorrecto, intente de nuevo",  Toast.LENGTH_SHORT).show();;
-					}
-				} catch (JSONException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} 
+				
 			 }
 			
 			@Override

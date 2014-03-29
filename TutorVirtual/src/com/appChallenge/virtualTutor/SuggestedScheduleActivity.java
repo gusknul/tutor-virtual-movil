@@ -15,9 +15,19 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+/**
+ * 
+ * @author Maxima cohesión
+ * Activity para presentar la carga academica sugerida al alumno 
+ *
+ */
 public class SuggestedScheduleActivity extends Activity {
 
+	/**
+	 * variable para recuperar el objeto json del activity VirtualTutorActivity, para enviar la peticion al web services
+	 */
 	public static final String EXTRA_JSON_TIME_WINDOWS = "jsonTimeWindows";
+	
 	private String jsonTimeWindows;
 	private static final String URL = "http://192.168.229.118/subject.json";
 	private ListView listViewOrdinary;
@@ -43,6 +53,7 @@ public class SuggestedScheduleActivity extends Activity {
 			e.printStackTrace();
 		}
 		client.post(this, URL, entity, "application/json", new AsyncHttpResponseHandler(){
+			
 			@Override
 			 public void onSuccess(String response){   
 				try {
@@ -66,6 +77,12 @@ public class SuggestedScheduleActivity extends Activity {
 		
 	}
 	
+	
+	/**
+	 * Metodo que parsea el objeto json de la respuesta proporcionada por el web services y lista la carga academica sugerida
+	 * @param response
+	 * @throws JSONException
+	 */
 	
 	public void fillSuggested (String response) throws JSONException{
 		JSONObject suggestedSchedule = new JSONObject(response);

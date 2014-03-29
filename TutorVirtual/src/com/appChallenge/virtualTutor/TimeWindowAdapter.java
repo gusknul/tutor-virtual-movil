@@ -13,18 +13,33 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+/**
+ * 
+ * @author Maxima cohesión
+ * Adapter de list view para estampas de tiempo disponibles
+ *
+ */
 public class TimeWindowAdapter extends ArrayAdapter<TimeWindow> {
 
 	private Context context;
 	
 	private ArrayList<TimeWindow> list;
 	
+	/**
+	 * Constructor de la clase TimeWindowAdapter
+	 * @param context
+	 * @param list
+	 */
 	public TimeWindowAdapter(Context context, ArrayList<TimeWindow> list) {
 		super(context, R.layout.item_time_window, list);
 		this.context = context;
 		this.list = list;
 	}
 	
+
+	/**
+	 * Metodo heredado de ArrayAdapter para lenar el listview
+	 */
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		

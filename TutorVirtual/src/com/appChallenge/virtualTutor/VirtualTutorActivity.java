@@ -18,6 +18,13 @@ import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+
+/**
+ * 
+ * @author Maxima cohesion
+ * Activity para generar los horarios disponibles de los alumnos
+ *
+ */
 public class VirtualTutorActivity extends Activity {
 
 	private Spinner daySpinner;
@@ -28,6 +35,9 @@ public class VirtualTutorActivity extends Activity {
 	
 	private ListView timeWindowListView;
 	
+	/**
+	 * variable que sirve para recuperar la matricula del estudiante del activity de Logeo
+	 */
 	public static final String EXTRA_ENROLLMENT = "enrollment";
 	
 	private String enrollment;
@@ -60,6 +70,10 @@ public class VirtualTutorActivity extends Activity {
 		enrollment = getIntent().getStringExtra(EXTRA_ENROLLMENT);
 	}
 	
+	/**
+	 * Metodo para insertar una estampa de tiempo disponible del alumno
+	 * @param view
+	 */
 	public void insertTimeWindow(View view){
 		int startHour = startTimePicker.getCurrentHour();
 		int startMinutes = startTimePicker.getCurrentMinute();
@@ -88,6 +102,10 @@ public class VirtualTutorActivity extends Activity {
 		adapter.add(timeWindow);
 	}
 	
+	/**
+	 * Metodo que envia al activity de sugerencia de carga academica un objeto json para hacer la peticion al web services
+	 * @param view
+	 */
 	public void generateSuggestedSchedule(View view){
 		
 		JSONArray timeWindows = new JSONArray();
@@ -98,8 +116,8 @@ public class VirtualTutorActivity extends Activity {
 			 try {
 				JSONObject timeWindow = new JSONObject();
 				timeWindow.put("day", adapter.getItem(i).getDay());
-				timeWindow.put("start_time", adapter.getItem(i).getStartTime().getTime() / 1000);
-				timeWindow.put("end_time", adapter.getItem(i).getEndTime().getTime() / 1000);
+				timeWindow.put("start_time", adapter.getItem(i).getStartTime().toString());
+				timeWindow.put("end_time", adapter.getItem(i).getEndTime().toString());
 				timeWindows.put(timeWindow);
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block

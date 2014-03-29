@@ -1,52 +1,58 @@
 package com.appChallenge.virtualTutor.beans;
 
+/**
+ * 
+ * @author Maxima cohesion
+ *
+ */
 public class Student
 {
-	private String id;
+	/**
+	 * Atributos del bean Student
+	 */
 	private String enrollment;
 	private String password;
 	
-	public Student( String id , String enrollment, String password ){
-		this.id = id;
-		this.enrollment = enrollment;
-		this.password = password;
-	}
-	
+	/**
+	 * Constructor pde la clase Student 
+	 * @param enrollment
+	 * @param password
+	 */
 	public Student(String enrollment, String password ){
 		this.enrollment = enrollment;
 		this.password = password;
 	}
 	
-	public String getId() {
-		return id;
-	}
-	
-	public void setId(String id) {
-		this.id = id;
-	}
-	
+	/**
+	 * metodo que obtiene la matricula del alumno 
+	 * @return
+	 */
 	public String getEnrollment() {
 		return enrollment;
 	}
 	
+	/**
+	 *metodo que establece la matricula del alumno 
+	 * @param enrollment
+	 */
+	
 	public void setEnrollment(String enrollment) {
 		this.enrollment = enrollment;
 	}
-	
+	/**
+	 * metodo que obtiene la contraseña del alumno
+	 * @return
+	 */
 	public String getPassword() {
 		return password;
 	}
-	
+	/**
+	 * metodo que establece la contraseña del alumno
+	 * @param password
+	 */
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
-	@Override
-	public String toString() {
-		return    id + "\n"
-				+ enrollment + "\n"
-				+ password;
-	}
-	
 	
 }

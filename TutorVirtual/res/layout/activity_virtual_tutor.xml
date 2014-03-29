@@ -23,51 +23,51 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical" >
-				
-                <TextView 
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/day"/>
-                
+                    android:text="@string/day" />
+
                 <Spinner
                     android:id="@+id/spinner_day"
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content" 
-                    android:entries="@array/day_names"/>
-                
-                <TextView 
+                    android:layout_height="wrap_content"
+                    android:entries="@array/day_names" />
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text = "@string/start_time"/>
-                
+                    android:text="@string/start_time" />
+
                 <TimePicker
                     android:id="@+id/time_picker_start_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
-                
-                <TextView 
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text = "@string/end_time"/>
-                
+                    android:text="@string/end_time" />
+
                 <TimePicker
                     android:id="@+id/time_picker_end_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
-                
-                <Button 
+
+                <Button
                     android:id="@+id/button_insert_time_window"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" 
-                    android:text="@string/insert_time_window"
-                    android:onClick="insertTimeWindow"/>
-                
-                <Button 
+                    android:layout_height="wrap_content"
+                    android:onClick="insertTimeWindow"
+                    android:text="@string/insert_time_window" />
+
+                <Button
                     android:id="@+id/button_generate_suggestes_schedule"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" 
-                    android:text="@string/generate_suggestes_schedule"
-                    android:onClick="generateSuggestedSchedule"/>
+                    android:layout_height="wrap_content"
+                    android:onClick="generateSuggestedSchedule"
+                    android:text="@string/generate_suggestes_schedule" />
             </LinearLayout>
         </ScrollView>
     </LinearLayout>
