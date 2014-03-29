@@ -8,6 +8,10 @@
     <string name="boton_ingresar">Ingresar</string>
     <string name="matricula">Matricula</string>
     <string name="contrasenia">Contraseña</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="hora_inicio">Hora inicio:</string>
+    <string name="hora_final">Hora final:</string>
+    <string name="guardar">Registrar</string>
+    <string name="disponibilidad_horario">Disponibilidad de horario</string>
+    <string name="dia">Dia:</string>
 
 </resources>

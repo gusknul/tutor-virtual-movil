@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name = "day_names">
+        <item >LUN</item>
+        <item >MAR</item>
+        <item >MIER</item>
+        <item >JUEV</item>
+        <item >VIER</item>
+    </string-array>
+    
+    
+</resources>
