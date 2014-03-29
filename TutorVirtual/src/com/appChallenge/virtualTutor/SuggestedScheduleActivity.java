@@ -73,7 +73,7 @@ public class SuggestedScheduleActivity extends Activity {
 			@Override
 			 public void onSuccess(String response){   
 				try {
-					Log.i("Response",response.toString());
+					Log.i("Response",response);
 					fillSuggested(response);
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
@@ -85,7 +85,6 @@ public class SuggestedScheduleActivity extends Activity {
 			public void onFailure(int statusCode, Throwable error,
 					String content) {
 				// TODO Auto-generated method stub
-				Log.i("statusCode", String.valueOf(statusCode));
 				if(statusCode == 0){
 					Toast.makeText(SuggestedScheduleActivity.this, "El servidor no responde", Toast.LENGTH_SHORT).show();;
 				}
