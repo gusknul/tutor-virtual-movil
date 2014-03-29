@@ -16,5 +16,6 @@
     <string name="title_activity_suggested_schedule">Sugerencia de carga academica</string>
     <string name="text_view_ordinary">Ordinario</string>
     <string name="text_view_extra">Extraordinario</string>
+    <string name="text_view_ip">Direccion ip del servidor</string>
 
 </resources>

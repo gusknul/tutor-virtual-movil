@@ -2,15 +2,19 @@ package com.appChallenge.virtualTutor;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+
 import org.apache.http.entity.StringEntity;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import com.appchalenge.tutorvirtual.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
+
 import android.os.Bundle;
 import android.app.Activity;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -25,11 +29,21 @@ public class SuggestedScheduleActivity extends Activity {
 
 	/**
 	 * variable para recuperar el objeto json del activity VirtualTutorActivity, para enviar la peticion al web services
+	 * variable para recuperar la matricula del alumno del activity VirtualTutorActivity
+	 * variable para recuperar la ip del servidor del activity VirtualTutorActivity
+	 * 
 	 */
 	public static final String EXTRA_JSON_TIME_WINDOWS = "jsonTimeWindows";
+	public static final String EXTRA_ENROLLMENT = "enrollment";
+	public static final String EXTRA_IP_SERVER = "ipServer";
+
 	
 	private String jsonTimeWindows;
-	private static final String URL = "http://192.168.229.118/subject.json";
+	private String enrollment;
+	private String ipServer;
+	//private static final String URL = "http://192.168.229.118/subject.json";
+	private static final String URL = "http://";
+	private static final String URL_SERVER = "/";
 	private ListView listViewOrdinary;
 	private ListView listViewExtra;
 	
@@ -38,12 +52,14 @@ public class SuggestedScheduleActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_suggested_schedule);
 		jsonTimeWindows = getIntent().getStringExtra(EXTRA_JSON_TIME_WINDOWS);
+		enrollment =getIntent().getStringExtra(EXTRA_ENROLLMENT);
+		ipServer = getIntent().getStringExtra(EXTRA_IP_SERVER);
 		listViewExtra = (ListView) findViewById(R.id.list_view_extra);
 		listViewOrdinary = (ListView) findViewById(R.id.list_view_ordinary);
 		suggestedSchedule(jsonTimeWindows);
 	}
 	
-	private void suggestedSchedule(String jsonTimeWindows){
+	private void suggestedSchedule(String jsonTimeWindows){ 
 		AsyncHttpClient client = new AsyncHttpClient();
 		StringEntity entity = null;
 		try {
@@ -52,11 +68,12 @@ public class SuggestedScheduleActivity extends Activity {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		client.post(this, URL, entity, "application/json", new AsyncHttpResponseHandler(){
+		client.post(this, URL+ipServer+URL_SERVER+enrollment, entity, "application/json", new AsyncHttpResponseHandler(){
 			
 			@Override
 			 public void onSuccess(String response){   
 				try {
+					Log.i("Response",response);
 					fillSuggested(response);
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block

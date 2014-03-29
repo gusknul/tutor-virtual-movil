@@ -30,8 +30,10 @@ public class Login extends Activity {
 	private Button login;
 	private EditText enrollment;
 	private EditText password;
+	private EditText ipServer;
 	private static final String MESSAGE_EMPTY = "Es necesario llenar todos los campos";
-	private static final String URL = "http://192.168.229.26/Aplicaciones/tutor_virtual/api_v1/login";
+	private static final String URL = "http://";
+	private static final String URL_SERVER = "/Aplicaciones/tutor_virtual/api_v1/login";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,7 @@ public class Login extends Activity {
 		login = (Button) findViewById(R.id.button_login);
 		enrollment = (EditText) findViewById(R.id.edit_text_enrollment);
 		password = (EditText) findViewById(R.id.edit_text_password);
+		ipServer = (EditText) findViewById(R.id.text_view_ip_server);
 	}
 
 
@@ -54,9 +57,16 @@ public class Login extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				if( enrollment.getText().toString().equals("") || password.getText().toString().equals(""))
-					Toast.makeText(Login.this,MESSAGE_EMPTY , Toast.LENGTH_SHORT).show();
-				else  validateUser();
+				if(!ipServer.getText().toString().equals("")){
+					if( enrollment.getText().toString().equals("") || password.getText().toString().equals(""))
+						Toast.makeText(Login.this,MESSAGE_EMPTY , Toast.LENGTH_SHORT).show();
+					else  validateUser();
+				}
+				
+				else{
+					Toast.makeText(Login.this, "Direccion ip vacia, proporcione la ip del servidor", Toast.LENGTH_SHORT).show();;
+				}
+				
 			}
 		});
 	}
@@ -81,12 +91,13 @@ public class Login extends Activity {
 		}
 		
 		AsyncHttpClient client = new AsyncHttpClient();
-		client.post(this, URL, entity, "application/json", new AsyncHttpResponseHandler(){
+		client.post(this, URL+ipServer.getText().toString()+URL_SERVER, entity, "application/json", new AsyncHttpResponseHandler(){
 			@Override
 			 public void onSuccess(String response){
 				
 						Intent intent = new Intent(Login.this,VirtualTutorActivity.class);
 						intent.putExtra(VirtualTutorActivity.EXTRA_ENROLLMENT, enrollment.getText().toString());
+					    intent.putExtra(VirtualTutorActivity.EXTRA_IP_SERVER, ipServer.getText().toString());
 						startActivity(intent);
 				
 			 }
@@ -100,7 +111,6 @@ public class Login extends Activity {
 				}
 				if(statusCode == 0){
 					Toast.makeText(Login.this, "El servidor no responde", Toast.LENGTH_SHORT).show();
-					Log.i("status code", String.valueOf(statusCode));
 				}
 					
 			}

@@ -37,10 +37,13 @@ public class VirtualTutorActivity extends Activity {
 	
 	/**
 	 * variable que sirve para recuperar la matricula del estudiante del activity de Logeo
+	 * variable que sirve para recuperar la ip del servidor del activity de Logeo
 	 */
 	public static final String EXTRA_ENROLLMENT = "enrollment";
+	public static final String EXTRA_IP_SERVER = "ipServer";
 	
 	private String enrollment;
+	private String ipServer;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +71,7 @@ public class VirtualTutorActivity extends Activity {
 		});
 
 		enrollment = getIntent().getStringExtra(EXTRA_ENROLLMENT);
+		ipServer = getIntent().getStringExtra(EXTRA_IP_SERVER);
 	}
 	
 	/**
@@ -128,7 +132,9 @@ public class VirtualTutorActivity extends Activity {
 		
 		String jsonTimeWindows = timeWindows.toString();
 		Intent intent = new Intent(VirtualTutorActivity.this,SuggestedScheduleActivity.class);
+		intent.putExtra(SuggestedScheduleActivity.EXTRA_ENROLLMENT, enrollment);
 		intent.putExtra(SuggestedScheduleActivity.EXTRA_JSON_TIME_WINDOWS, jsonTimeWindows);
+		intent.putExtra(SuggestedScheduleActivity.EXTRA_IP_SERVER, ipServer);
 		startActivity(intent);
 	}
 
