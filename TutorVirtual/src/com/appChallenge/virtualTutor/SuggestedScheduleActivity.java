@@ -43,7 +43,7 @@ public class SuggestedScheduleActivity extends Activity {
 	private String ipServer;
 	//private static final String URL = "http://192.168.229.118/subject.json";
 	private static final String URL = "http://";
-	private static final String URL_SERVER = "/";
+	private static final String URL_SERVER = "/Aplicaciones/tutor_virtual/api_v1/suggested_schedule/";
 	private ListView listViewOrdinary;
 	private ListView listViewExtra;
 	
@@ -73,7 +73,7 @@ public class SuggestedScheduleActivity extends Activity {
 			@Override
 			 public void onSuccess(String response){   
 				try {
-					Log.i("Response",response);
+					Log.i("Response",response.toString());
 					fillSuggested(response);
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
@@ -85,6 +85,7 @@ public class SuggestedScheduleActivity extends Activity {
 			public void onFailure(int statusCode, Throwable error,
 					String content) {
 				// TODO Auto-generated method stub
+				Log.i("statusCode", String.valueOf(statusCode));
 				if(statusCode == 0){
 					Toast.makeText(SuggestedScheduleActivity.this, "El servidor no responde", Toast.LENGTH_SHORT).show();;
 				}

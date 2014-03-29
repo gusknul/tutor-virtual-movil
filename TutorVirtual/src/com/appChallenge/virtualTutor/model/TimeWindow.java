@@ -73,6 +73,8 @@ public class TimeWindow {
 		this.endTime = endTime;
 	}
 	
+	
+	
 	/**
 	 * Metodo que realiza la comprobacion de traslapes de horarios
 	 * @param other
@@ -88,6 +90,13 @@ public class TimeWindow {
 		}
 		
 		return b.getStartTime().getTime() < a.getEndTime().getTime();
+	}
+
+	@Override
+	public String toString() {
+		return day + "\n" 
+			   + startTime + "\n"
+			   + endTime + "\n";
 	}
 
 }

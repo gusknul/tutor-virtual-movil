@@ -2,14 +2,18 @@ package com.appChallenge.virtualTutor;
 
 import java.sql.Time;
 import java.util.ArrayList;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import com.appChallenge.virtualTutor.model.TimeWindow;
 import com.appchalenge.tutorvirtual.R;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
@@ -130,10 +134,18 @@ public class VirtualTutorActivity extends Activity {
 			 
 		}
 		
-		String jsonTimeWindows = timeWindows.toString();
+		JSONObject objectTimeWindows = new JSONObject();
+		try {
+			objectTimeWindows.put("timeWindows", timeWindows);
+			//Log.i("datas", objectTimeWindows.toString());
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		Intent intent = new Intent(VirtualTutorActivity.this,SuggestedScheduleActivity.class);
 		intent.putExtra(SuggestedScheduleActivity.EXTRA_ENROLLMENT, enrollment);
-		intent.putExtra(SuggestedScheduleActivity.EXTRA_JSON_TIME_WINDOWS, jsonTimeWindows);
+		intent.putExtra(SuggestedScheduleActivity.EXTRA_JSON_TIME_WINDOWS, objectTimeWindows.toString());
 		intent.putExtra(SuggestedScheduleActivity.EXTRA_IP_SERVER, ipServer);
 		startActivity(intent);
 	}
