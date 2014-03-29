@@ -44,12 +44,6 @@ public class Login extends Activity {
 		password = (EditText) findViewById(R.id.edit_text_password);
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.login, menu);
-		return true;
-	}
 
 	private void login() {
 		login.setOnClickListener(new OnClickListener() {
@@ -57,13 +51,9 @@ public class Login extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				if( enrollment.getText().toString().equals("") || password.getText().toString().equals("")){
+				if( enrollment.getText().toString().equals("") || password.getText().toString().equals(""))
 					Toast.makeText(Login.this,MESSAGE_EMPTY , Toast.LENGTH_SHORT).show();
-				}
-				
-				else{
-					validateUser();
-				}
+				else  validateUser();
 			}
 		});
 	}

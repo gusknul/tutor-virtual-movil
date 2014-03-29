@@ -14,5 +14,8 @@
     <string name="schedule_availability">Disponibilidad de horario</string>
     <string name="day">Dia:</string>
     <string name="generate_suggestes_schedule">Carga academica sugerida</string>
+    <string name="title_activity_suggested_schedule">SuggestedScheduleActivity</string>
+    <string name="text_view_ordinary">Ordinario</string>
+    <string name="text_view_extra">Extraordinario</string>
 
 </resources>

@@ -3,6 +3,8 @@ package com.appChallenge.virtualTutor.model;
 import java.sql.Time;
 import java.util.Date;
 
+import android.util.Log;
+
 public class TimeWindow {
 	
 	private String day;
@@ -47,6 +49,9 @@ public class TimeWindow {
 			a = other;
 			b = this;
 		}
+		
+		//Log.i("", String.valueOf( b.getStartTime().getTime() ));
+		//Log.i("", String.valueOf( a.getEndTime().getTime() ));
 		
 		return b.getStartTime().getTime() < a.getEndTime().getTime();
 	}

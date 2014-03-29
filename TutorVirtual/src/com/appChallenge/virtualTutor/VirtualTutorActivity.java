@@ -3,11 +3,17 @@ package com.appChallenge.virtualTutor;
 import java.sql.Time;
 import java.util.ArrayList;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import com.appChallenge.virtualTutor.model.TimeWindow;
 import com.appchalenge.tutorvirtual.R;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnLongClickListener;
 import android.widget.AdapterView;
@@ -46,7 +52,7 @@ public class VirtualTutorActivity extends Activity {
 		startTimePicker = (TimePicker)findViewById(R.id.time_picker_start_time);
 		endTimePicker = (TimePicker)findViewById(R.id.time_picker_end_time);
 		
-		TimeWindowAdapter adapter = new TimeWindowAdapter(this, new ArrayList<TimeWindow>());
+		final TimeWindowAdapter adapter = new TimeWindowAdapter(this, new ArrayList<TimeWindow>());
 		
 		timeWindowListView = (ListView) findViewById(R.id.list_view_time_window);
 		timeWindowListView.setAdapter(adapter);
@@ -54,7 +60,7 @@ public class VirtualTutorActivity extends Activity {
 
 			@Override
 			public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-				 parent.removeViewAt(position);
+				adapter.remove(adapter.getItem(position));
 				 return true;
 			}
 		});
@@ -88,6 +94,32 @@ public class VirtualTutorActivity extends Activity {
 		}
 		
 		adapter.add(timeWindow);
+	}
+	
+	public void generateSuggestedSchedule(View view){
+		
+		JSONArray timeWindows = new JSONArray();
+		TimeWindowAdapter adapter = (TimeWindowAdapter) timeWindowListView.getAdapter();
+		
+		for(int i = 0; i < adapter.getCount() ; i++){
+			
+			 try {
+				JSONObject timeWindow = new JSONObject();
+				timeWindow.put("day", adapter.getItem(i).getDay());
+				timeWindow.put("start_time", adapter.getItem(i).getStartTime().getTime() / 1000);
+				timeWindow.put("end_time", adapter.getItem(i).getEndTime().getTime() / 1000);
+				timeWindows.put(timeWindow);
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			 
+		}
+		
+		String jsonTimeWindows = timeWindows.toString();
+		Intent intent = new Intent(VirtualTutorActivity.this,SuggestedScheduleActivity.class);
+		intent.putExtra(SuggestedScheduleActivity.EXTRA_JSON_TIME_WINDOWS, jsonTimeWindows);
+		startActivity(intent);
 	}
 
 }

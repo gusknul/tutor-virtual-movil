@@ -31,6 +31,11 @@
             android:label="@string/title_activity_virtual_tutor"
             android:screenOrientation="landscape" >
         </activity>
+        <activity
+            android:name="com.appChallenge.virtualTutor.SuggestedScheduleActivity"
+            android:label="@string/title_activity_suggested_schedule"
+            android:screenOrientation = "landscape">
+        </activity>
     </application>
 
 </manifest>
