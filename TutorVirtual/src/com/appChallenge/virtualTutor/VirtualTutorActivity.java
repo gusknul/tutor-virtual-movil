@@ -2,23 +2,17 @@ package com.appChallenge.virtualTutor;
 
 import java.sql.Time;
 import java.util.ArrayList;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import com.appChallenge.virtualTutor.model.TimeWindow;
 import com.appchalenge.tutorvirtual.R;
-
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
-import android.view.View.OnLongClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TimePicker;
@@ -31,8 +25,6 @@ public class VirtualTutorActivity extends Activity {
 	private TimePicker startTimePicker;
 	
 	private TimePicker endTimePicker;
-	
-	private Button generateSuggestedScheduleButton;
 	
 	private ListView timeWindowListView;
 	

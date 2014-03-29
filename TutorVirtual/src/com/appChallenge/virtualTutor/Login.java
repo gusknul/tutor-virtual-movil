@@ -5,12 +5,15 @@ import java.io.UnsupportedEncodingException;
 import org.apache.http.entity.StringEntity;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import com.appchalenge.tutorvirtual.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -23,11 +26,9 @@ public class Login extends Activity {
 	private Button login;
 	private EditText enrollment;
 	private EditText password;
-	private final String TAG = "Information";
 	private static final String MESSAGE =  "Nombre de usuario o contraseña incorrecta, intente de nuevo";
 	private static final String MESSAGE_EMPTY = "Es necesario llenar todos los campos";
 	private static final String URL = "http://192.168.229.26/Aplicaciones/tutor_virtual/api_v1/login";
-	//private static final String URL = "http://192.168.229.118/user.json";
 	private static final String ENRROLLMENT = "enrollment";
 
 	@Override
@@ -80,10 +81,22 @@ public class Login extends Activity {
 		AsyncHttpClient client = new AsyncHttpClient();
 		client.post(this, URL, entity, "application/json", new AsyncHttpResponseHandler(){
 			@Override
-			 public void onSuccess(String response){   
-				Intent intent = new Intent(Login.this,VirtualTutorActivity.class);
-				intent.putExtra(VirtualTutorActivity.EXTRA_ENROLLMENT, enrollment.getText().toString());
-				startActivity(intent);
+			 public void onSuccess(String response){
+				try {
+					JSONObject success = new JSONObject(response);
+					
+					if(success.get("success").toString().equals("true")){
+						Intent intent = new Intent(Login.this,VirtualTutorActivity.class);
+						intent.putExtra(VirtualTutorActivity.EXTRA_ENROLLMENT, enrollment.getText().toString());
+						startActivity(intent);
+					}
+					else{
+						Toast.makeText(Login.this, "El nombre de usuario o contraseña es incorrecto, intente de nuevo",  Toast.LENGTH_SHORT).show();;
+					}
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} 
 			 }
 			
 			@Override
@@ -91,7 +104,8 @@ public class Login extends Activity {
 					String content) {
 				// TODO Auto-generated method stub
 				if(statusCode == 0){
-					Toast.makeText(Login.this, "El servidor no responde", Toast.LENGTH_SHORT).show();;
+					Toast.makeText(Login.this, "El servidor no responde", Toast.LENGTH_SHORT).show();
+					Log.i("status code", String.valueOf(statusCode));
 				}
 					
 			}

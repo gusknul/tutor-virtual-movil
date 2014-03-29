@@ -17,7 +17,7 @@
     		    android:layout_width="match_parent"
     		    android:layout_height="wrap_content"
     		    android:gravity="center"
-    		    android:text="@string/text_view_ordinary"
+    		    android:text="@string/text_view_extra"
     		    android:textSize="20sp" />
 
     		<ListView
@@ -39,7 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="@string/text_view_extra"
+                android:text="@string/text_view_ordinary"
                 android:textSize="20sp" />
 
     		<ListView
