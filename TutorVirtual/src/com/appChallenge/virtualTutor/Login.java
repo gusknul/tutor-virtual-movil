@@ -84,6 +84,7 @@ public class Login extends Activity {
 		client.post(this, URL, entity, "application/json", new AsyncHttpResponseHandler(){
 			@Override
 			 public void onSuccess(String response){
+				
 						Intent intent = new Intent(Login.this,VirtualTutorActivity.class);
 						intent.putExtra(VirtualTutorActivity.EXTRA_ENROLLMENT, enrollment.getText().toString());
 						startActivity(intent);
@@ -94,6 +95,9 @@ public class Login extends Activity {
 			public void onFailure(int statusCode, Throwable error,
 					String content) {
 				// TODO Auto-generated method stub
+				if(statusCode == 401){
+					Toast.makeText(Login.this, "Matricula o contraseña incorrecta, intentelo de nuevo", Toast.LENGTH_SHORT).show();
+				}
 				if(statusCode == 0){
 					Toast.makeText(Login.this, "El servidor no responde", Toast.LENGTH_SHORT).show();
 					Log.i("status code", String.valueOf(statusCode));
