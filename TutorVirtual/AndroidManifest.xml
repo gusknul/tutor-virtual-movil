@@ -17,7 +17,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.appchalenge.tutorvirtual.Login"
+            android:name="com.appChallenge.virtualTutor.Login"
             android:label="@string/title_activity_login"
             android:screenOrientation="portrait" >
             <intent-filter>
@@ -27,7 +27,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.appchalenge.tutorvirtual.VirtualTutorActivity"
+            android:name="com.appChallenge.virtualTutor.VirtualTutorActivity"
             android:label="@string/title_activity_virtual_tutor"
             android:screenOrientation="landscape" >
         </activity>

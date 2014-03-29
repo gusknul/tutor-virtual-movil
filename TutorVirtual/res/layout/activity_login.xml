@@ -9,7 +9,7 @@
     tools:context=".Login" >
 
     <EditText
-        android:id="@+id/contrasenia"
+        android:id="@+id/edit_text_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -19,21 +19,21 @@
         android:inputType="textPassword" />
 
     <Button
-        android:id="@+id/Ingresar"
+        android:id="@+id/button_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/contrasenia"
+        android:layout_below="@+id/edit_text_password"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="42dp"
-        android:text="@string/boton_ingresar" />
+        android:text="@string/button_login" />
 
     <EditText
-        android:id="@+id/matricula"
+        android:id="@+id/edit_text_enrollment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/contrasenia_texto"
-        android:layout_alignLeft="@+id/contrasenia"
-        android:layout_alignRight="@+id/contrasenia"
+        android:layout_above="@+id/edit_text_password"
+        android:layout_alignLeft="@+id/edit_text_password"
+        android:layout_alignRight="@+id/edit_text_password"
         android:layout_marginBottom="66dp"
         android:ems="10"
         android:inputType="phone" >
@@ -43,23 +43,23 @@
         </EditText>
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/matricula"
-        android:layout_alignRight="@+id/contrasenia_texto"
-        android:layout_marginBottom="24dp"
-        android:text="@string/matricula"
+        android:layout_above="@+id/edit_text_password"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        android:text="@string/password"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
-        android:id="@+id/contrasenia_texto"
+        android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/contrasenia"
+        android:layout_above="@+id/edit_text_enrollment"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="30dp"
-        android:text="@string/contrasenia"
+        android:layout_marginBottom="47dp"
+        android:text="@string/enrollment"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>

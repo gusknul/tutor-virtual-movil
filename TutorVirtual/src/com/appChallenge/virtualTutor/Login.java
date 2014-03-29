@@ -1,21 +1,16 @@
-package com.appchalenge.tutorvirtual;
+package com.appChallenge.virtualTutor;
 
 import java.io.UnsupportedEncodingException;
 
 import org.apache.http.entity.StringEntity;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import com.appChallenge.virtualTutor.beans.Student;
+import com.appchalenge.tutorvirtual.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
-import com.loopj.android.http.RequestHandle;
-import com.loopj.android.http.RequestParams;
-
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -44,9 +39,9 @@ public class Login extends Activity {
 	}
 
 	private void initComponents() {
-		login = (Button) findViewById(R.id.Ingresar);
-		enrollment = (EditText) findViewById(R.id.matricula);
-		password = (EditText) findViewById(R.id.contrasenia);
+		login = (Button) findViewById(R.id.button_login);
+		enrollment = (EditText) findViewById(R.id.edit_text_enrollment);
+		password = (EditText) findViewById(R.id.edit_text_password);
 	}
 
 	@Override
@@ -97,7 +92,7 @@ public class Login extends Activity {
 			@Override
 			 public void onSuccess(String response){   
 				Intent intent = new Intent(Login.this,VirtualTutorActivity.class);
-				intent.putExtra("enrollment", enrollment.getText().toString());
+				intent.putExtra(VirtualTutorActivity.EXTRA_ENROLLMENT, enrollment.getText().toString());
 				startActivity(intent);
 			 }
 			
